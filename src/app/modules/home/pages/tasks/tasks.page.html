@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        Lista de Tareas
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-item lines="none">
+        <ion-label class="filtro-label">Clasificación</ion-label>
+        <ion-select [(ngModel)]="filterClasification" interface="popover" slot="end" class="filtro-select">
+          <ion-select-option value="">Todas</ion-select-option>
+          <ion-select-option *ngFor="let clasif of clasificationService.clasifications" [value]="clasif">{{ clasif }}</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <div id="container">
+        <app-task-list [filterClasification]="filterClasification"></app-task-list>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button [disabled]="clasificationService.clasifications.length === 0" (click)="addNewTask()"
+                color="primary" size="small">Agregar Tarea</ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="addNewClasification()" color="secondary" size="small">Nueva clasificación</ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+</ion-footer>

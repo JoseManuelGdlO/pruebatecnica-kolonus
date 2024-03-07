@@ -1,0 +1,16 @@
+
+<ion-list lines="none">
+    <ion-item *ngFor="let task of tasks">
+        <ion-icon slot="start" [name]="task.done ? 'checkbox-outline' : 'square-outline'" color="primary"></ion-icon>
+        <ion-label class="task-label" [class.task-completada]="task.done">
+          {{ task.name }}
+          <p class="task-clasificacion">Clasificación: {{ task.clasification }}</p>
+        </ion-label>
+        <ion-button fill="clear" (click)="task.done = true" slot="end" color="success" *ngIf="!task.done">
+          <ion-icon name="checkmark-outline"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" (click)="confirmRemoveTask(task)" slot="end" color="danger">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+    </ion-item>
+</ion-list>

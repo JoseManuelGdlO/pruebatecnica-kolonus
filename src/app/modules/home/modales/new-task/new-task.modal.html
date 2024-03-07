@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Nueva Tarea
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="closeModal()">
+                <ion-icon name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list lines="none">
+        <ion-item>
+            <ion-label position="stacked">Nombre de la Tarea</ion-label>
+            <ion-input [(ngModel)]="newTask" placeholder="Ingrese el nombre de la tarea"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Clasificación</ion-label>
+            <ion-select [(ngModel)]="clasification">
+                <ion-select-option value="todas" selected>Todas</ion-select-option>
+                <ion-select-option *ngFor="let clasif of clasificationService.clasifications" [value]="clasif">{{ clasif
+                    }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-buttons slot="end">
+            <ion-button color="danger" (click)="closeModal()">Cancelar</ion-button>
+            <ion-button color="primary" (click)="saveTask()" [disabled]="disableButton()">Guardar</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

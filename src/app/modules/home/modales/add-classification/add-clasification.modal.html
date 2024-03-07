@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Nueva Clasificación
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="closeModal()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list lines="none">
+      <ion-item>
+        <ion-label position="stacked">Nombre de la Clasificación</ion-label>
+        <ion-input [(ngModel)]="newClasification" placeholder="Ingrese el nombre de la clasificación"></ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  
+  <ion-footer>
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button color="danger" (click)="closeModal()">Cancelar</ion-button>
+        <ion-button color="primary" (click)="saveClasification()" [disabled]="disableButton()">Guardar</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
